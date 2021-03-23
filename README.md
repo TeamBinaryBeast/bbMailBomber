@@ -22,7 +22,7 @@ cd bbMailBomber
 ```
 Now you can run bbMailBomber
 ``` bash
-python bbMailBomber.py
+python3 bbMailBomber.py
 ```
 ## Note
 You need to enable less secure apps on Gmail and Yahoo
