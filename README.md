@@ -3,8 +3,6 @@
 
 Python Script for Email Bombing which supports Gmail, Yahoo, Hotmail/Outlook
 
-<a href="https://asciinema.org/a/LPEmn3kibOGFnt9229vaeuoWG" target="_blank"><img src="https://asciinema.org/a/LPEmn3kibOGFnt9229vaeuoWG.png" /></a>
-
 Made with ![heart](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63c-4813-11e6-9430-6015d98aeaab.png) by <a href=https://www.facebook.com/jisan.thecoder/>Sadman Sakib Jisan</a> &amp; <a href=https://www.facebook.com/raihan.islam.35728>Raihan Chowdhury</a>
 
 ## Features
@@ -13,16 +11,16 @@ Made with ![heart](https://cloud.githubusercontent.com/assets/4301109/16754758/8
 - Support Hotmail/Outlook
 
 ## Usage
-EmBomber should work on all Linux distros running Python 2.7
+bbMailBomber should work on all Linux distros running Python 3. 
 First, clone it by entering the following command in the terminal
 ``` bash
 git clone https://github.com/TeamBinaryBeast/bbMailBomber
 ```
-Now navigate to EmBomber directory
+Now navigate to bbMailBomber directory
 ``` bash
 cd bbMailBomber
 ```
-Now you can run EmBomber
+Now you can run bbMailBomber
 ``` bash
 python bbMailBomber.py
 ```
