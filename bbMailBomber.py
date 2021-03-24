@@ -59,7 +59,7 @@ try:
 	user = input(bcolors.OKGREEN + 'Your Email: ' + bcolors.ENDC)
 	pwd = getpass.getpass(bcolors.OKGREEN + 'Password: ' + bcolors.ENDC)
 	to = input(bcolors.OKGREEN + 'To: ' + bcolors.ENDC)
-	subject = input(bcolors.OKGREEN + 'Subject (Optional): ' + bcolors.ENDC)
+	subject = input(bcolors.OKGREEN + 'Subject: ' + bcolors.ENDC)
 	body = input(bcolors.OKGREEN + 'Message: ' + bcolors.ENDC)
 	nomes = input(bcolors.OKGREEN + 'Number of Emails to send: ' + bcolors.ENDC)
 	nomes = int(nomes)
@@ -85,10 +85,7 @@ if server == '1' or server == 'gmail' or server == 'Gmail':
 		sys.exit()
 	while no != nomes:
 		try:
-			tempSubject = list(range(0, 100000))
-			subjectNum = random.randint(0,100000)
-			subject = tempSubject[subjectNum]
-			message = 'From: ' + user + '\nSubject: ' + str(subject) + '\n' + body
+			message = 'From: ' + user + '\nSubject: ' + subject + str(no) + '\n' + body
 			server.sendmail(user, to, message)
 			print(bcolors.WARNING + 'Successfully sent ' + str(no+1) + ' emails' + bcolors.ENDC)
 			no += 1
@@ -116,10 +113,7 @@ elif server == '2' or server == 'Yahoo' or server == 'yahoo':
 		sys.exit()
 	while no != nomes:
 		try:
-			tempSubject = list(range(0, 100000))
-			subjectNum = random.randint(0,100000)
-			subject = tempSubject[subjectNum]
-			message = 'From: ' + user + '\nSubject: ' + str(subject) + '\n' + body
+			message = 'From: ' + user + '\nSubject: ' + subject + str(no) + '\n' + body
 			server.sendmail(user, to, message)
 			print(bcolors.WARNING + 'Successfully sent ' + str(no + 1) + ' emails' + bcolors.ENDC)
 			no += 1
@@ -145,10 +139,7 @@ elif server == '3' or server == 'outlook' or server == 'Outlook' or server == 'H
 		sys.exit()
 	while no != nomes:
 		try:
-			tempSubject = list(range(0, 100000))
-			subjectNum = random.randint(0,100000)
-			subject = tempSubject[subjectNum]
-			message = 'From: ' + user + '\nSubject: ' + str(subject) + '\n' + body
+			message = 'From: ' + user + '\nSubject: ' + subject + str(no) + '\n' + body
 			server.sendmail(user, to, message)
 			print(bcolors.WARNING + 'Successfully sent ' + str(no + 1) + ' emails' + bcolors.ENDC)
 			no += 1
